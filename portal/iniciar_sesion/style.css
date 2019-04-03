@@ -1,0 +1,17 @@
+.columna {
+    margin-top: 100px;
+    background: rgba(255, 255, 255, 0.5);
+    box-shadow: 0px 10px 10px 2px rgba(0,0,0,0.3);
+    
+}
+.vl {
+  border-left: 1px solid grey;
+}
+
+.navbar {
+    background: rgba(0, 0, 0, 0.7);
+}
+
+body {
+    background: rgba(232, 234, 235, 1);
+}

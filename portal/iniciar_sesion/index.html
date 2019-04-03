@@ -5,36 +5,25 @@
     <title>Navbar</title>
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <link rel="stylesheet" href="../../css/bootstrap.min.css">
-    <style>
-        body {
-            /*padding-top: 56px;*/
-            /*padding-bottom: 56px;*/
-        }
-
-        @media screen and (max-width:576px) {
-            .container {
-                width: 100%;
-            }
-        }
-    </style>
+    <link rel="stylesheet" type="text/css" href="style.css" />
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+    <!---- Header ---->
+    <nav class="navbar navbar-expand-md fixed-top navbar-dark">
         <div class="container-fluid ">
-          <!---- mara o logo de la empresa ---->
-           <a href="#" class="navbar-brand">
+
+            <!---- Marca o logo de la empresa ---->
+            <a href="#" class="navbar-brand">
                 <h1>PWEEL</h1>
             </a>
-           
-            <!----- Añadir boton ocn icono de menu-hamburgesa ----->
+
+            <!----- Añadir boton con icono de menu-hamburguesa ----->
             <button class="navbar-toggler navbar-toggler-right" data-toggle="collapse" data-target="#menu-principal" aria-controls="menu-principal" aria-expanded="false" aria-label="Menu">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
-            
-
-
+            <!---- Menu de navegacion ---->
             <div class="collapse navbar-collapse" id="menu-principal">
                 <ul class="navbar-nav ml-auto text-right">
                     <li class="nav-item">
@@ -53,7 +42,42 @@
             </div>
         </div>
     </nav>
+    <!---- Formulario ---->
+    <div class="container-fluid">
+        <div class="row">
+            <div class=" columna col-12 col-md-10 col-lg-8 mb-3 pr-5 pl-5 py-4 rounded-bottom offset-md-1 offset-lg-2">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-sm-12 col-md-6 ">
+                            <h4>Iniciar sesión</h4>
+                            <hr>
+                            <form action="">
+                                <div class="form-group">
+                                    <label for="email">Correo electrónico</label>
+                                    <input type="text" class="form-control" placeholder="Correo electronico" name="email" id="email">
+                                </div>
+                                <div class="form-group">
+                                    <label for="pass">Contraseña</label>
+                                    <input type="password" class="form-control" placeholder="Contraseña" name="pass" id="pass">
+                                </div>
+                                <button class="btn btn-primary btn-lg btn-block" type="submit">Enviar</button>
+                                <a href=""></a>
+                            </form>
+                        </div>
+                        <div class="vl hidden-sm-down"></div>
+                        <div class="col-sm-12 col-md-5 mx-3 my-5 py-5 text-light text-center bg-secondary">
+                            <h5>¿Aun no estas registrado?</h5>
+                            <p>Aplica a miles de ofertas de empleo o encuentra los mejores candidatos para tu empresa</p>
+                            <button type="button" class="btn btn-warning">Registrar Hoja de Vida</button>
+                        </div>
+                    </div>
 
+
+                </div>
+
+            </div>
+        </div>
+    </div>
     <script src="../../js/jquery-3.3.1.min.js"></script>
     <script src="../../js/bootstrap.min.js"></script>
 </body></html>
