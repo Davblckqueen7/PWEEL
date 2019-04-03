@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Navbar</title>
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <link rel="stylesheet" href="../../css/bootstrap.min.css">
+    <style>
+        body {
+            /*padding-top: 56px;*/
+            /*padding-bottom: 56px;*/
+        }
+
+        @media screen and (max-width:576px) {
+            .container {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+        <div class="container-fluid ">
+          <!---- mara o logo de la empresa ---->
+           <a href="#" class="navbar-brand">
+                <h1>PWEEL</h1>
+            </a>
+           
+            <!----- Añadir boton ocn icono de menu-hamburgesa ----->
+            <button class="navbar-toggler navbar-toggler-right" data-toggle="collapse" data-target="#menu-principal" aria-controls="menu-principal" aria-expanded="false" aria-label="Menu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            
+
+
+            <div class="collapse navbar-collapse" id="menu-principal">
+                <ul class="navbar-nav ml-auto text-right">
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">INICIO</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">SOBRE NOSOTROS</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">CONTACTANOS</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">INICIAR SESION</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <script src="../../js/jquery-3.3.1.min.js"></script>
+    <script src="../../js/bootstrap.min.js"></script>
+</body></html>
