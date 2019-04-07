@@ -1,3 +1,12 @@
+html {
+    background: url(../imgs/Home0.jpg);
+    background-size: cover;
+}
+
+body{
+    background: rgba(0,0,0,0);
+}
+
 .columna {
     margin-top: 100px;
     background: rgba(255, 255, 255, 0.5);
@@ -15,10 +24,6 @@
 
 .navbar {
     background: rgba(0, 0, 0, 1);
-}
-
-body {
-    background: rgba(232, 234, 235, 1);
 }
 
 @media (max-width: 768px) {

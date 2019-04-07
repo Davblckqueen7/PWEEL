@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.0/css/all.css' integrity='sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ' crossorigin='anonymous'>
-    <link rel="stylesheet" type="text/css" href="css/style_inisec.css" />
+    <link rel="stylesheet" type="text/css" href="css/style_reg.css" />
 </head>
 
 <body>
@@ -41,7 +41,7 @@
                     </li>
                     <p class="mb-0 mt-2 text-white-50 d-sm-none d-none d-lg-block d-md-block d-xl-block">/</p>
                     <li class="nav-item">
-                        <a href="#" class="nav-link active">INICIAR SESION</a>
+                        <a href="#" class="nav-link">INICIAR SESION</a>
                     </li>
                 </ul>
             </div>
@@ -50,26 +50,34 @@
         </div>
     </nav>
     <!---- Formulario ---->
-    <section style="background-image: url(imgs/fondo2.jpg); background-size:cover;">
-        <div class="container-fluid">
+        <div class="ctp container-fluid">
             <div class="row">
                 <div class=" columna col-12 col-md-5 col-lg-4 mb-3 pr-5 pl-5 py-4 rounded-bottom offset-md-1 offset-lg-2">
-                    <h4>Crear cuenta en PWEEL</h4>
+                    <h4>Crear tu cuenta en PWEEL</h4>
                     <hr>
                     <div class="container-fluid">
                         <div class="row">
                             <div class="col-sm-12">
 
                                 <form action="">
+                                   <div class="form-group">
+                                       <label for="IDType">Tipo de identifición</label>
+                                       <select name="IDType" id="IDType" class="form-control">
+                                           <option value="null" disabled>Selecciona una opción</option>
+                                           <option value="cedula">Cédula</option>
+                                           <option value="cedex">Cédula extranjeria</option>
+                                           <option value="pasaporte">Pasaporte</option>
+                                       </select>
+                                   </div>
                                     <div class="form-group">
-                                        <label for="email">Correo electrónico</label>
-                                        <input type="text" class="form-control" placeholder="Correo electronico" name="email" id="email">
+                                        <label for="IDNum">Número de identificación</label>
+                                        <input type="text" class="form-control" placeholder="No. identificación" name="IDNum" id="IDNum">
                                     </div>
                                     <div class="form-group">
-                                        <label for="pass">Contraseña</label>
-                                        <input type="password" class="form-control" placeholder="Contraseña" name="pass" id="pass">
+                                        <label for="email">Correo electronico</label>
+                                        <input type="text" class="form-control" placeholder="correo@correo.com" name="email" id="email">
                                     </div>
-                                    <button class="btn btn-primary btn-lg btn-block" type="submit">Inicia sesión</button>
+                                    <button class="btn btn-primary offset-4" type="submit">Continuar</button>
                                     <a href=""></a>
                                 </form>
                             </div>
@@ -80,11 +88,10 @@
 
                 </div>
                 <div class="col-12 col-md-5 col-lg-4 columna2 d-flex justify-content-center align-items-center">
-                    <p class="tx text-white">Bienvenido, completa los siguientes <br />datos para saber si ya estás<br />registrado. Si aún no estás inscrito<br />sigue los demás pasos para conocer<br />los mejores empleos del país.</p>
+                    <p class="tx text-white mb-0"><strong>Bienvenido, completa los siguientes <br />datos para saber si ya estás<br />registrado. Si aún no estás inscrito<br />sigue los demás pasos para conocer<br />los mejores empleos del país.</strong></p>
                 </div>
             </div>
         </div>
-    </section>
     <!---- Footer ---->
     <footer class="container-fluid footer">
         <div class="row fter">
