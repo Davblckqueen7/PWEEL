@@ -1,6 +1,8 @@
 html {
     background: url(../imgs/Home0.jpg);
     background-size: cover;
+    height: 100%;
+    overflow: hidden;
 }
 
 body{
