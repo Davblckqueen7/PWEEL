@@ -17,6 +17,28 @@ body {
     padding-left: 3px;
 }
 
+.titulo{
+    background: rgba(0,0,0,.90);
+    color: #ff7011;
+}
+
+.titulo::after, .titulo::before{
+    content:"";
+    position:absolute;
+    width:20px;
+    height:50%;
+    left:100%;
+}
+
+.titulo::after{
+    bottom:0;
+    background: linear-gradient(to right bottom, rgba(0,0,0,.90) 50%, transparent 50%);
+}
+.titulo::before{
+      top:0;
+    background: linear-gradient(to right top, rgba(0,0,0,.90) 50%, transparent 50%);
+}
+
 .colp {
         height: 490px;
     }
@@ -25,6 +47,11 @@ body {
     .colp {
         height: 550px;
     }
+}
+.raya {
+    margin-top: 3px;
+    border-top: 1px solid coral;
+    height: 3px;
 }
 
 .vl {
