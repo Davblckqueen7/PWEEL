@@ -87,8 +87,17 @@
             </div>
             <div class="vl mx-3 d-lg-none d-none d-lg-block d-xl-block"></div>
             <!---- Formulario ---->
-            <div class="col-lg-7 col-md-12 ml-md-0 ml-lg-3 p-5" style="background: rgb(250,250,250)">
-
+            <div class="col-lg-7 col-md-12 ml-md-0 ml-lg-3 p-0" style="background: rgb(250,250,250)">
+                <div class="avatar-upload">
+                    <div class="avatar-edit">
+                        <input type='file' id="imageUpload" accept=".png, .jpg, .jpeg" />
+                        <label for="imageUpload"></label>
+                    </div>
+                    <div class="avatar-preview">
+                        <div id="imagePreview" style="background-image: url(imgs/perfil.jpg);">
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
