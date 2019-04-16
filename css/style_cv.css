@@ -158,6 +158,11 @@ header{
     border: 2px dotted rgba(0,0,0,.5);
 }
 
+.noresize {
+  resize: none;
+ 
+}
+
 footer {
     position: relative;
     right: 0;
