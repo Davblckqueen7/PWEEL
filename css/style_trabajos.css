@@ -82,6 +82,11 @@ footer {
  
 }
 
+#img_recargar{
+    height: 100px;
+    width: 100epx;
+}
 
-
-
+.btn_ex{
+    height: 2em !important;
+}
