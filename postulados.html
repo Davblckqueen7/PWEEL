@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lan="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Trabajos | PWEEL.com</title>
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.0/css/all.css' integrity='sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ' crossorigin='anonymous'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css/style_postulado.css" />
+    <script type="text/javascript" src="js/radialprogress.js"></script>
+</head>
+
+<body>
+    <!-- Header -->
+    <nav class="navbar navbar-expand-md navbar-dark">
+        <div class="container-fluid ">
+            <!---- Marca o logo de la empresa ---->
+            <a href="#" class="navbar-brand">
+                <h1>PWEEL</h1>
+            </a>
+
+            <!----- Añadir boton con icono de menu-hamburguesa ----->
+            <button class="navbar-toggler navbar-toggler-right" data-toggle="collapse" data-target="#menu-principal" aria-controls="menu-principal" aria-expanded="false" aria-label="Menu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!---- Menu de navegacion ---->
+            <div class="collapse navbar-collapse" id="menu-principal">
+                <ul class="navbar-nav ml-auto text-right">
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">INICIO</a>
+                    </li>
+                    <p class="mb-0 mt-2 text-white-50 d-sm-none d-none d-lg-block d-md-block d-xl-block">/</p>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">SOBRE NOSOTROS</a>
+                    </li>
+                    <p class="mb-0 mt-2 text-white-50 d-sm-none d-none d-lg-block d-md-block d-xl-block">/</p>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">CONTACTANOS</a>
+                    </li>
+                    <p class="mb-0 mt-2 text-white-50 d-sm-none d-none d-lg-block d-md-block d-xl-block">/</p>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">INICIAR SESION</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- Contenido -->
+    <div class="container">
+        <div class="row mt-3 mb-5 mx-5">
+            <!-- Breadcrumb -->
+            <div class="col-12 pl-0">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb arr-right">
+                        <li class="breadcrumb-item" aria-current="page"><strong>Mis vacante</strong></li>
+                        <li class="breadcrumb-item" aria-current="page"><strong>Vacante No. #</strong></li>
+                        <li class="breadcrumb-item active" aria-current="page" id="num-vacante"><strong>Postulados</strong></li>
+                    </ol>
+                </nav>
+            </div>
+            <!-- Content -->
+            <div class="col-lg-6 pl-0">
+                <h4 class="mb-1">Nombre de la vacante</h4>
+                <hr class="mt-0 mb-1">
+                <h5 class="text-muted">Lista de postulantes</h5>
+                <div class="lista scrollbar-ripe-malinka border border-secondary">
+                    <ul class="list-group p-0" id="postulado">
+                        <li class="list-group-item d-inline-flex justify-content-start py-1 border border-secondary rounded-0">
+                            <div class="avatar-preview1">
+                                <div id="imagePreview" style="background-image: url(imgs/perfil.jpg);"></div>
+                            </div>
+                            <div class="datos-postulante px-3">
+                                <p class="mb-0"><small class="text-muted">ID del postulante</small></p>
+                                <h5>Nombre postulante</h5>
+                                <p class="card-subtitle mb-0 text-muted"><strong>Ciudad:</strong><label id="lugar_vacante" class="ml-2">Nombre ciudad</label></p>
+                            </div>
+                            <button type="button" data-toggle="collapse" data-target="#collapse_postulado_num" aria-expanded="true" class="btn px-1 py-1 ml-auto" id="btn_seecv"><i class='fas fas fa-angle-double-right' style='font-size:32px;color:orange'></i></button>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-6 border border-secondary p-0 cv-space">
+                <div class="cv scrollbar-ripe-malinka collapse " id="collapse_postulado_num">
+                    <div class="d-flex justify-content-center align-items-center py-3 ">
+                        <label class="switch">
+                            <input type="checkbox">
+                            <span class="slider2 round"></span>
+                        </label>
+                        <div class="avatar-preview">
+                            <div id="imagePreview" style="background-image: url(imgs/perfil.jpg);">
+                            </div>
+                        </div>
+                        <label class="switch">
+                            <input type="checkbox">
+                            <span class="slider round"></span>
+                        </label>
+                    </div>
+                    <div class="list-group filter-wrap">
+                        <!-- Info personal -->
+                        <article class="list-group-item p-0">
+                            <header class="filter-header d-flex justify-content-start align-items-center px-3 py-1 border border-light rounded-top border-right-0 border-left-0 border-top-0">
+                                <i class='far fa-address-card' style='font-size:24px'></i>
+                                <p class="title mb-0 ml-2 h6">Informacion personal</p>
+                                <button type="button" data-toggle="collapse" data-target="#collapse1" aria-expanded="true" class="btn px-1 py-1 ml-auto" id="btn_seeinfo"><i class='fas fas fa-angle-down' style='font-size:32px;color:gray'></i></button>
+                            </header>
+                            <div class="vp-info filter-content p-4 collapse show" id="collapse1">
+                                <small class="text-muted">Nombre completo</small>
+                                <h4 id="fullname">David Santiago Reina Rojas</h4>
+                                <small class="text-muted">Teléfono de contacto</small>
+                                <h4 id="cel">+57 3125154722</h4>
+                            </div>
+                            <div class="info filter-content p-4 collapse" id="collapse1">
+                               <p class="card-subtitle mb-0"><strong>Nombres:</strong><label id="infNombres" class="ml-2">David Santiago</label></p>
+                               <p class="card-subtitle mb-0"><strong>Apellidos:</strong><label id="infApellidos" class="ml-2">Reina Rojas</label></p>
+                               <p class="card-subtitle mb-0"><strong>No. Identificación:</strong><label id="indID" class="ml-2">C.C. 1020827649</label></p>
+                               <p class="card-subtitle mb-0"><strong>Edad:</strong><label id="infEdad" class="ml-2">21 años</label></p>
+                               <p class="card-subtitle mb-0"><strong>Fecha de nacimiento:</strong><label id="infFechanaci" class="ml-2">30/08/1997</label></p>
+                               <p class="card-subtitle mb-0"><strong>Genero:</strong><label id="infGenero" class="ml-2">Masculino</label></p>
+                               <p class="card-subtitle mb-0"><strong>Estado civil:</strong><label id="infEstado" class="ml-2">Soltero</label></p>
+                               <p class="card-subtitle mb-0"><strong>Ciudad de residencia:</strong><label id="infCiudad" class="ml-2">Bogotá</label></p>
+                               <p class="card-subtitle mb-0"><strong>Dirección:</strong><label id="infDireccion" class="ml-2">Cra 73B #8-74</label></p>
+                               <p class="card-subtitle mb-0"><strong>Ciudad de nacimiento:</strong><label id="infCiudadNatal" class="ml-2">Bogotá</label></p>
+                               <p class="card-subtitle mb-0"><strong>Telefono principal:</strong><label id="infMovil" class="ml-2">3125154722</label></p>
+                               <p class="card-subtitle mb-0"><strong>Relefono secundario:</strong><label id="ingFijo" class="ml-2">8126555</label></p>
+                               <p class="card-subtitle mb-0"><strong>E-mail:</strong><label id="infoEmail" class="ml-2">u1201730@unimilitar.edu.co</label></p>
+                            </div>
+                        </article>
+                        <!-- Perfil laboral -->
+                        <article class="list-group-item p-0">
+                            <header class="filter-header d-flex justify-content-start align-items-center px-3 py-1 ">
+                                <i class='far fa-id-badge' style='font-size:24px'></i>
+                                <p class="title mb-0 ml-3 h6">Perfil laboral</p>
+                                <button type="button" data-toggle="collapse" data-target="#collapse2" aria-expanded="true" class="btn px-1 py-1 ml-auto" id="btn_seelabinfo"><i class='fas fas fa-angle-down' style='font-size:32px;color:gray'></i></button>
+                            </header>
+                            <div class="vp-laboral filter-content p-4 collapse show" id="collapse2">
+                                <h5>Descripción de su perfil laboral</h5>
+                                <small class="text-muted" id="labDescrip">Soy un joven emprendedor y listo par alo que se venga :v.</small>
+                                
+                            </div>
+                            <div class="laboral filter-header p-4 collapse" id="collapse2">
+                                <form action="" class="formulario1">
+                                   <p class="card-subtitle mb-0"><strong>Años de experiencia:</strong><label id="labAnos" class="ml-2">2</label></p>
+                                   <p class="card-subtitle mb-0"><strong>Su descripción:</strong></p>
+                                   <label id="infoEmail" class="ml-2">Soy un joven emprendedor y listo par alo que se venga :v.</label>
+                                   <p class="card-subtitle mb-0"><strong>Trabajos:</strong></p>                                    
+                                    <div class="d-flex border border-secondary rounded p-3">
+                                        <span class="badge badge-secondary d-flex align-items-center py-0 mr-2">Ejemplo <button class="btn p-0 ml-1 text-light">x</button></span>
+                                    </div>
+                                </form>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- Footer -->
+    <footer class="container-fluid footer">
+        <div class="row fter">
+            <div class="col">
+                <div class="d-flex justify-content-end">
+                    <h1 class="mb-0 mr-auto">PWEEL</h1>
+                    <img src="imgs/logo-multimedia.png" width="40" height="40" class="mt-2 mr-2">
+                    <div class="vl2 hidden-sm-down"></div>
+                    <img src="imgs/umilitar-logo.png" width="60" height="50">
+                </div>
+                <small>COPYRIGHT © 2019 Prohibida su reproducción total o parcial, así como su traducción a cualquier idioma sin autorización escrita de su titular. pweel.com es un proyecto de la materia de Tecnologias del Internet UMNG. <a href="#" class="link text-muted"><strong>Aviso de privacidad</strong></a> </small>
+                <br />
+                <i class="fab fa-dochub"></i>
+                <a href="#" class="link small text-muted"><strong>Términos y condiciones</strong></a>
+            </div>
+        </div>
+    </footer>
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+</body>
+
+</html>
