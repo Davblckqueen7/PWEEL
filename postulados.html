@@ -57,16 +57,20 @@
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb arr-right">
                         <li class="breadcrumb-item" aria-current="page"><strong>Mis vacante</strong></li>
-                        <li class="breadcrumb-item" aria-current="page"><strong>Vacante No. #</strong></li>
-                        <li class="breadcrumb-item active" aria-current="page" id="num-vacante"><strong>Postulados</strong></li>
+                        <li class="breadcrumb-item" aria-current="page" id="num-vacante"><strong>Vacante No. #</strong></li>
+                        <li class="breadcrumb-item active" aria-current="page"><strong>Postulados</strong></li>
                     </ol>
                 </nav>
             </div>
             <!-- Content -->
+            <!-- Lista de postulados -->
             <div class="col-lg-6 pl-0">
                 <h4 class="mb-1">Nombre de la vacante</h4>
                 <hr class="mt-0 mb-1">
-                <h5 class="text-muted">Lista de postulantes</h5>
+                <div class="d-flex justify-content-between">
+                    <h5 class="text-muted">Lista de postulantes</h5>
+                    <h6 class="text-muted mt-1 mb-0"><label for="psotcont" id="postcont">1 de 10</label></h6>
+                </div>                
                 <div class="lista scrollbar-ripe-malinka border border-secondary">
                     <ul class="list-group p-0" id="postulado">
                         <li class="list-group-item d-inline-flex justify-content-start py-1 border border-secondary rounded-0">
@@ -84,6 +88,7 @@
                     </ul>
                 </div>
             </div>
+            <!-- CV postulado -->
             <div class="col-lg-6 border border-secondary p-0 cv-space">
                 <div class="cv scrollbar-ripe-malinka collapse " id="collapse_postulado_num">
                     <div class="d-flex justify-content-center align-items-center py-3 ">
