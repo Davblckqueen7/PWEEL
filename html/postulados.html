@@ -64,7 +64,7 @@
             </div>
             <!-- Content -->
             <!-- Lista de postulados -->
-            <div class="col-lg-6 pl-0">
+            <div class="col-lg-6 pl-0 pr-0 pr-lg-3">
                 <h4 class="mb-1">Nombre de la vacante</h4>
                 <hr class="mt-0 mb-1">
                 <div class="d-flex justify-content-between">
@@ -73,16 +73,27 @@
                 </div>                
                 <div class="lista scrollbar-ripe-malinka border border-secondary">
                     <ul class="list-group p-0" id="postulado">
-                        <li class="list-group-item d-inline-flex justify-content-start py-1 border border-secondary rounded-0">
-                            <div class="avatar-preview1">
-                                <div id="imagePreview" style="background-image: url(imgs/perfil.jpg);"></div>
+                        <li class="list-group-item rounded-0 p-0" style="background-color: rgba(0,0,0,0)">
+                            <div class="d-lg-inline-flex justify-content-start py-1 py-1 px-4 w-100 d-none " style="background-color: white">
+                                <div class="avatar-preview1">
+                                    <div id="imagePreview" style="background-image: url(imgs/perfil.jpg);"></div>
+                                </div>
+                                <div class="datos-postulante px-3">
+                                    <p class="mb-0"><small class="text-muted">ID del postulante</small></p>
+                                    <h5>Nombre postulante</h5>
+                                    <p class="card-subtitle mb-0 text-muted"><strong>Ciudad:</strong><label id="lugar_vacante" class="ml-2">Nombre ciudad</label></p>
+                                </div>
+                                <button type="button" data-toggle="collapse" data-target="#collapse_postulado_num" aria-expanded="true" class="btn px-1 py-1 ml-auto" id="btn_seecv"><i class='fas fas fa-angle-double-right' style='font-size:32px;color:orange'></i></button>
                             </div>
-                            <div class="datos-postulante px-3">
-                                <p class="mb-0"><small class="text-muted">ID del postulante</small></p>
-                                <h5>Nombre postulante</h5>
-                                <p class="card-subtitle mb-0 text-muted"><strong>Ciudad:</strong><label id="lugar_vacante" class="ml-2">Nombre ciudad</label></p>
+                            
+                            <div class="d-lg-none d-inline-flex justify-content-start py-1 py-1 px-4 ">
+                                
+                                <button type="button" data-toggle="collapse" data-target="#collapse_postulado_num" aria-expanded="true" class="btn px-1 py-1 ml-auto" id="btn_seecv">
+                                    <div class="avatar-preview1">
+                                    <div id="imagePreview" style="background-image: url(imgs/perfil.jpg);"></div>
+                                </div>
+                                </button>
                             </div>
-                            <button type="button" data-toggle="collapse" data-target="#collapse_postulado_num" aria-expanded="true" class="btn px-1 py-1 ml-auto" id="btn_seecv"><i class='fas fas fa-angle-double-right' style='font-size:32px;color:orange'></i></button>
                         </li>
 
                     </ul>
