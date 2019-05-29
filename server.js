@@ -33,10 +33,7 @@ app.get('/',(req, res)=>{
  
 
 app.get('/trabajos',(req, res)=>{
-  res.render('trabajos',{
-      Nombre_Pagina :'Daniel',   //Vaiable para pagina dinamica
-    ID_vacante : '154645'
-  });                 //renderiza inicio de sesion                     
+  res.render('trabajos', Objeto);                 //renderiza inicio de sesion                     
 });// escuchar puerto 8008
  
 //puerto
