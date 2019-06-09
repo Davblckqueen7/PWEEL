@@ -12,7 +12,7 @@ var validator = require('express-validator');
 var MongoStore = require('connect-mongo')(session);
 
 var indexRouter = require('./routes/index');
-//var usersRouter = require('./routes/users');
+var usersRouter = require('./routes/users');
 
 var app = express();
 
@@ -23,7 +23,7 @@ mongoose.connect(ATLAS_URI, {
     useNewUrlParser: true
 });
 
-//require('./config/passport');
+require('./config/passport');
 
 // view engine setup
 app.engine('.hbs', expressHbs({ defaultLayout: 'layout', extname: '.hbs' }));
@@ -58,7 +58,7 @@ app.use(function(req, res, next) {
 });
 
 app.use('/', indexRouter);
-//app.use('/user', usersRouter);
+app.use('/user', usersRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
