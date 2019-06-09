@@ -16,7 +16,8 @@ var usersRouter = require('./routes/users');
 
 var app = express();
 
-let ATLAS_URI = 'mongodb+srv://BlackHierophant7:Gf6UihGzYjDhXpAh@clusterpweel-55aug.mongodb.net/test?retryWrites=true&w=majority';
+//let ATLAS_URI = 'mongodb+srv://BlackHierophant7:Gf6UihGzYjDhXpAh@clusterpweel-55aug.mongodb.net/test?retryWrites=true&w=majority';
+let ATLAS_URI = 'mongodb+srv://daniel:123@clustertestnode-zp8cj.mongodb.net/DanielTest?retryWrites=true&w=majority';
 
 // start mongo DB
 mongoose.connect(ATLAS_URI, {
