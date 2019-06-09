@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+var vacante = require('../models/vacante');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -10,15 +11,14 @@ router.get('/', function(req, res, next) {
 });
 
 /* Obtener pagina de trabajos. */
-router.get('/trabajos', function (req, res, next) {
-    vacante.find({}, function (err, docs) {
+router.get('/trabajos', function(req, res, next) {
+    vacante.find({}, function(err, docs) {
         chunk1 = [];
         chunk2 = [];
         for (var i = 0; i < docs.length; i++) {
             if (i % 2 == 0) {
                 chunk1.push(docs[i]);
-            }
-            else {
+            } else {
                 chunk2.push(docs[i]);
             }
 
@@ -35,15 +35,14 @@ router.get('/trabajos', function (req, res, next) {
 });
 
 /* Obtener pagina de vacantes. */
-router.get('/vacantes', function (req, res, next) {
-    vacante.find({}, function (err, docs) {
+router.get('/vacantes', function(req, res, next) {
+    vacante.find({}, function(err, docs) {
         chunk1 = [];
         chunk2 = [];
         for (var i = 0; i < docs.length; i++) {
             if (i % 2 == 0) {
                 chunk1.push(docs[i]);
-            }
-            else {
+            } else {
                 chunk2.push(docs[i]);
             }
 
@@ -61,7 +60,7 @@ router.get('/vacantes', function (req, res, next) {
 });
 
 /* Obtener pagina de postulados. */
-router.get('/postulados', function (req, res, next) {
+router.get('/postulados', function(req, res, next) {
     res.render('postulados', {
         title: 'PWEEL | Postulados',
         style: 'style_postulado.css'
@@ -69,7 +68,7 @@ router.get('/postulados', function (req, res, next) {
 });
 
 /* Obtener pagina de confing_vacante. */
-router.get('/confing_vacante', function (req, res, next) {
+router.get('/confing_vacante', function(req, res, next) {
     res.render('confing_vacante', {
         title: vacante_actual_id,
         style: 'style_conf_vacante.css'
@@ -77,14 +76,14 @@ router.get('/confing_vacante', function (req, res, next) {
 });
 
 /* Obtener pagina de confing_user. */
-router.get('/confing_user', function (req, res, next) {
+router.get('/confing_user', function(req, res, next) {
     res.render('confing_user', {
         title: 'PWEEL | confing_user',
         style: 'style_confing_user.css'
     });
 });
 
-router.get('/terminos_condiciones', function (req, res, next) {
+router.get('/terminos_condiciones', function(req, res, next) {
     res.render('terminos_condiciones', {
         title: 'PWEEL | terminos_condiciones',
         style: 'style_terms.css'
