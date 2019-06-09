@@ -118,8 +118,6 @@ router.post('/registro2', passport.authenticate('local.signup2', {
 
 }));
 
-module.exports = router;
-
 //protección (Middlewares):
 function isLoggedIn(req, res, next) {
     if (req.isAuthenticated()) {
@@ -134,3 +132,5 @@ function notLoggedIn(req, res, next) {
     }
     res.redirect('/');
 };
+
+module.exports = router;
