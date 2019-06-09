@@ -23,7 +23,7 @@ mongoose.connect(ATLAS_URI, {
     useNewUrlParser: true
 });
 
-require('./config/passport');
+//require('./config/passport');
 
 // view engine setup
 app.engine('.hbs', expressHbs({ defaultLayout: 'layout', extname: '.hbs' }));
