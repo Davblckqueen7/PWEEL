@@ -12,6 +12,14 @@ var typeID = '';
 var numID = '';
 var email = '';
 
+/* GET home page. */
+router.get('/', function(req, res, next) {
+    res.render('home', {
+        title: 'PWEEL | Trabajo',
+        style: 'style.css'
+    });
+});
+
 router.get('/user/cv', isLoggedIn, function(req, res, next) {
     res.render('user/cv', {
         title: 'PWEEL | Hoja de vida',
@@ -132,14 +140,5 @@ function notLoggedIn(req, res, next) {
     }
     res.redirect('/');
 };
-
-/* GET home page. */
-router.get('/', function(req, res, next) {
-    res.render('home', {
-        title: 'PWEEL | Trabajo',
-        style: 'style.css'
-    });
-});
-
 
 module.exports = router;
