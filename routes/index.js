@@ -1,6 +1,8 @@
 var express = require('express');
 var router = express.Router();
 var vacante = require('../models/vacante');
+var vacante_actual_id = '';
+var vacante_actual_nombre = '';
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -59,6 +61,14 @@ router.get('/vacantes', function(req, res, next) {
 
 });
 
+router.post('/vacantes', function(req, res, next) {
+
+    var vacante_actual_id = req.body.id_de_la_vacante;
+    vacante_actual_nombre = req.body.nombre_de_la_vacante;
+    console.log("------------------------> Entro al post de mierda!!! ====> " + vacante_actual_id);
+    res.redirect('/confing_vacante/' + vacante_actual_id);
+});
+
 /* Obtener pagina de postulados. */
 router.get('/postulados', function(req, res, next) {
     res.render('postulados', {
@@ -68,10 +78,13 @@ router.get('/postulados', function(req, res, next) {
 });
 
 /* Obtener pagina de confing_vacante. */
-router.get('/confing_vacante', function(req, res, next) {
+router.get('/confing_vacante/:id', function(req, res, next) {
+    var id = req.params.id;
     res.render('confing_vacante', {
-        title: vacante_actual_id,
-        style: 'style_conf_vacante.css'
+        title: 'PWELL | Config vacante',
+        style: 'style_conf_vacante.css',
+        la_puta_id: id,
+        nombre_cargo: vacante_actual_nombre
     });
 });
 
