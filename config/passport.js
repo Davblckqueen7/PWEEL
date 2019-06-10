@@ -30,7 +30,7 @@ passport.use('local.signup2', new LocalStrategy({
         });
         return done(null, false, req.flash('error', messages));
     }
-    User.findOne({ 'email': email }, function(err, user) {
+    User.findOne({ 'cuenta.email': email }, function(err, user) {
         if (err) {
             return done(err);
         }

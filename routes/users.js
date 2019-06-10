@@ -4,6 +4,7 @@ var csrf = require('csurf');
 var passport = require('passport');
 
 var User = require('../models/user');
+var vacante = require('../models/vacante');
 
 var csrfProtection = csrf();
 router.use(csrfProtection);
@@ -70,7 +71,7 @@ router.post('/registro1', function(req, res, next) {
 
     var errors = req.validationErrors();
     User.findOne({
-        'email': email
+        'cuenta.email': email
     }, function(err, user) {
         var messages = [];
         var hay_error = false;
@@ -117,6 +118,36 @@ router.post('/registro2', passport.authenticate('local.signup2', {
     failureFlash: true
 
 }));
+
+router.post('/crear_vacante', function(req, res, next) {
+    console.log("----------------------------------------> " + email);
+    User.findOne({
+            'cuenta.email': email
+        },
+        function(err, user) {
+            var newVacante = new vacante();
+            newVacante.id_empleador = user._id;
+            newVacante.Cargo = req.body.nombre;
+            newVacante.Fecha_tar = req.body.fecha_form;
+            newVacante.Lugar = req.body.lugar_form;
+            newVacante.Tiempo = req.body.duracion_form;
+            newVacante.pago = req.body.pagus;
+            newVacante.num_vacantes = req.body.num_postulantes_form;
+            newVacante.express = req.body.express;
+            newVacante.descripcion = req.body.descripcion_vac;
+
+            console.log("--------------------------------> Creo la vacante");
+
+            newVacante.save(function(err, result) {
+                if (err) {}
+                res.redirect('/user/cv');
+            })
+            console.log("--------------------------------> Subio la vacante");
+            user.cv.vacantes_propias.push(newVacante._id);
+            user.save(done);
+            console.log("--------------------------------> Añadio la vacante a la lista del usuario");
+        })
+});
 
 //protección (Middlewares):
 function isLoggedIn(req, res, next) {
