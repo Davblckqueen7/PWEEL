@@ -12,6 +12,13 @@ var typeID = '';
 var numID = '';
 var email = '';
 
+router.get('/user/modo', function(req, res, next) {
+    res.render('user/modo', {
+        title: 'PWEEL | Modo',
+        style: 'style_modo.css'
+    });
+});
+
 /* GET home page. */
 router.get('/', function(req, res, next) {
     res.render('home', {
@@ -237,10 +244,32 @@ router.get('/terminos_condiciones', function(req, res, next) {
 
 
 router.get('/user/cv', isLoggedIn, function(req, res, next) {
-    res.render('user/cv', {
-        title: 'PWEEL | Hoja de vida',
-        style: 'style_cv.css'
-    })
+    User.findOne({
+        'cuenta.email': email
+    }, function(err, user) {
+        if (err) {
+            console.log("--------------------------------> Fail: " + err);
+        } else {
+            console.log("--------------------------------> si encontro al Usuario");
+            res.render('user/cv', {
+                title: 'PWEEL | Hoja de vida',
+                style: 'style_cv.css',
+                percent: user.cv.porcent,
+                nombres: user.cv.inf.nombres,
+                primer_apellido: user.cv.inf.primer_apellido,
+                segundo_apellido: user.cv.inf.segundo_apellido,
+                cel: user.cv.inf.cel,
+                cedula: user.cv.inf.num_doc,
+                dia: user.cv.inf.born_date.day,
+                ano: user.cv.inf.born_date.year,
+                ciudad: user.cv.inf.ciudad,
+                direccion: user.cv.inf.direccion,
+                bcity: user.cv.inf.born_city,
+                tel: user.cv.inf.tel,
+                correo: user.cuenta.email
+            });
+        }
+    });
 });
 
 router.get('/user/logout', isLoggedIn, function(req, res, next) {
@@ -269,9 +298,8 @@ router.post('/user/iniciarsesion', passport.authenticate('local.singin'), functi
     // If this function gets called, authentication was successful.
     // `req.user` contains the authenticated user.
     email = req.body.email.toString();
-    res.redirect('/user/cv');
+    res.redirect('/user/modo');
 });
-
 
 router.get('/user/registro1', function(req, res, next) {
     var messages = req.flash('error');
@@ -333,7 +361,7 @@ router.get('/user/registro2', function(req, res, next) {
 
 
 router.post('/user/registro2', passport.authenticate('local.signup2', {
-    successRedirect: '/user/cv',
+    successRedirect: '/user/modo',
     failureRedirect: '/user/registro2',
     failureFlash: true
 
