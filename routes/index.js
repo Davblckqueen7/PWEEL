@@ -12,6 +12,13 @@ var typeID = '';
 var numID = '';
 var email = '';
 
+var ista_ids = [];
+var tam_ista_ids;
+var id_user;
+var id_v0;
+var Uname;
+var Vname;
+
 router.get('/user/modo', function(req, res, next) {
     res.render('user/modo', {
         title: 'PWEEL | Modo',
@@ -29,27 +36,47 @@ router.get('/', function(req, res, next) {
 
 /* Obtener pagina de trabajos. */
 router.get('/trabajos', function(req, res, next) {
+    var V_pos1 = [];
+    var V_pos2 = [];
+    var T_chunk1 = [];
+    var T_chunk2 = [];
+
+    // todas las vacantes
     vacante.find({}, function(err, docs) {
-        chunk1 = [];
-        chunk2 = [];
+
         for (var i = 0; i < docs.length; i++) {
             if (i % 2 == 0) {
-                chunk1.push(docs[i]);
+                T_chunk1.push(docs[i]);
             } else {
-                chunk2.push(docs[i]);
+                T_chunk2.push(docs[i]);
             }
-
         }
-        vacantesCol1 = docs;
-
-        res.render('trabajos', {
-            title: 'Trabajos | PWEEL',
-            style: 'style_trabajos.css',
-            vacantes1: chunk1,
-            vacantes2: chunk2
+        User.findOne({
+            'cuenta.email': email
+        }, function(err, user) {
+            if (err) {
+                console.log("--------------->ERROR");
+            } else {
+                var V_pos = user.cv.vacantes_presentadas;
+                for (var i = 0; i < V_pos.length; i++) {
+                    if (i % 2 == 0) {
+                        V_pos1.push(V_pos[i]);
+                    } else {
+                        V_pos2.push(V_pos[i]);
+                    }
+                }
+                //render pag
+                res.render('trabajos', {
+                    title: 'Trabajos | PWEEL',
+                    style: 'style_trabajos.css',
+                    vacantes1: T_chunk1,
+                    vacantes2: T_chunk2,
+                    vacantes_pos1: V_pos1,
+                    vacantes_pos2: V_pos2
+                });
+            }
         });
     });
-
 });
 
 router.post('/trabajos', function(req, res, next) {
@@ -102,6 +129,13 @@ router.post('/ver_vacante', function(req, res, next) {
             }
             var newPresentacion = {
                 id: id_vacante,
+                Cargo: esta_vacante.Cargo,
+                Fecha_pub: esta_vacante.Fecha_pub,
+                Fecha_tar: esta_vacante.Fecha_tar,
+                Lugar: esta_vacante.Lugar,
+                Tiempo: esta_vacante.Tiempo,
+                pago: esta_vacante.pago,
+                descripcion: esta_vacante.descripcion,
                 estado: 0
             }
             user.cv.vacantes_presentadas.push(newPresentacion);
@@ -110,7 +144,20 @@ router.post('/ver_vacante', function(req, res, next) {
                     console.log("--------------------------------> Fail: " + err);
                     res.redirect('/');
                 } else {
-                    res.redirect('/trabajos');
+                    var newBebe = {
+                        id: user._id,
+                        nombre: user.cv.inf.nombres,
+                        aceptado: false
+                    }
+                    esta_vacante.postulados.push(newBebe);
+                    esta_vacante.save(function(err) {
+                        if (err) {
+                            console.log("--------------------------------> Fail: " + err);
+                            res.redirect('/');
+                        } else {
+                            res.redirect('/trabajos');
+                        }
+                    });
                 }
             });
         })
@@ -119,26 +166,55 @@ router.post('/ver_vacante', function(req, res, next) {
 
 /* Obtener pagina de vacantes. */
 router.get('/vacantes', function(req, res, next) {
-    vacante.find({}, function(err, docs) {
-        chunk1 = [];
-        chunk2 = [];
-        for (var i = 0; i < docs.length; i++) {
-            if (i % 2 == 0) {
-                chunk1.push(docs[i]);
-            } else {
-                chunk2.push(docs[i]);
-            }
 
+    //vacantes propias
+
+    User.findOne({
+        'cuenta.email': email
+    }, function(err, user) {
+
+        if (err) {
+            console.log("--------------------------------> Fail: " + err);
+        } else {
+            console.log("--------------------------------> Usuario encontrado ");
         }
-        vacantesCol1 = docs;
-        res.render('vacantes', {
-            title: 'Vacantes | PWEEL',
-            style: 'style_vacantes.css',
-            vacantes1: chunk1,
-            vacantes2: chunk2,
-            doctam: docs.length
+        id_user = user._id;
+        Uname = user.cv.inf.nombres;
+        tam_ista_ids = user.cv.vacantes_propias.length;
+        var j = tam_ista_ids - 1;
+        console.log("--------------------------------> Usuario.id: " + id_user);
+        console.log("--------------------------------> Usuario.nombre: " + Uname);
+        console.log("--------------------------------> Usuario.num_vacantes_propias: " + tam_ista_ids);
+        vacante.find({
+            id_empleador: id_user
+        }, function(err, users) {
+            if (err) {
+                console.error('not found : ' + err);
+            } else {
+                var V_prop1 = [];
+                var V_prop2 = [];
+                console.log("--------------------------------> ID: " + id_user);
+                console.log("--------------------------------> NUM: " + users.length);
+                for (var i = 0; i < users.length; i++) {
+                    if (i % 2 == 0) {
+                        V_prop1.push(users[i]);
+                    } else {
+                        V_prop2.push(users[i]);
+                    }
+                }
+
+                res.render('vacantes', {
+                    title: 'Vacantes | PWEEL',
+                    style: 'style_vacantes.css',
+                    vacantes_prop1: V_prop1,
+                    vacantes_prop2: V_prop2
+                });
+            }
         });
+
     });
+
+
 
 });
 
@@ -364,7 +440,6 @@ router.post('/user/registro2', passport.authenticate('local.signup2', {
     successRedirect: '/user/modo',
     failureRedirect: '/user/registro2',
     failureFlash: true
-
 }));
 
 //protección (Middlewares):

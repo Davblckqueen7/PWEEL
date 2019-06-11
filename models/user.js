@@ -17,6 +17,13 @@ var userSchema = new Schema({
         vacantes_propias: [Schema.Types.ObjectId],
         vacantes_presentadas: [{
             id: Schema.Types.ObjectId,
+            Cargo: String,
+            Fecha_pub: String,
+            Fecha_tar: Date,
+            Lugar: String,
+            Tiempo: Number,
+            pago: Number,
+            descripcion: String,
             estado: Number
         }],
         porcent: { type: Number, required: true },

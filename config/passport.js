@@ -80,7 +80,6 @@ passport.use('local.singin', new LocalStrategy({
     User.findOne({
         'cuenta.email': email
     }, function(err, user) {
-        console.log("--------------------------------->" + user);
         if (err) {
             return done(err);
         }
