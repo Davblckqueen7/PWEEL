@@ -1,13 +1,10 @@
 var express = require('express');
 var router = express.Router();
-var csrf = require('csurf');
 var passport = require('passport');
 
 var User = require('../models/user');
 var vacante = require('../models/vacante');
 
-var csrfProtection = csrf();
-router.use(csrfProtection);
 
 var vacante_actual_nombre = '';
 
@@ -37,14 +34,80 @@ router.get('/trabajos', function(req, res, next) {
 
         }
         vacantesCol1 = docs;
+
         res.render('trabajos', {
             title: 'Trabajos | PWEEL',
             style: 'style_trabajos.css',
             vacantes1: chunk1,
-            vacantes2: chunk2,
+            vacantes2: chunk2
         });
     });
 
+});
+
+router.post('/trabajos', function(req, res, next) {
+    console.log("--------------------------------> Entro a esta mierdaaaaaaaa ");
+    var id_vacante = req.body.thisid;
+    res.redirect('/ver_vacante/' + id_vacante);
+});
+
+router.get('/ver_vacante/:id', function(req, res, next) {
+    var id_vacante = req.params.id;
+    vacante.findOne({
+        '_id': id_vacante
+    }, function(err, esta_vacante) {
+        if (err) {
+            console.log("--------------------------------> Fail: " + err);
+        } else {
+            console.log("--------------------------------> Usuario: " + esta_vacante);
+            res.render('ver_vacante', {
+                title: 'Trabajos | PWEEL',
+                style: 'style_trabajos.css',
+                id: esta_vacante._id,
+                Cargo: esta_vacante.Cargo,
+                Lugar: esta_vacante.Lugar,
+                Fecha_pub: esta_vacante.Fecha_pub,
+                descripcion: esta_vacante.descripcion,
+                Tiempo: esta_vacante.Tiempo
+            });
+        }
+    });
+});
+
+router.post('/ver_vacante', function(req, res, next) {
+    console.log("--------Email--------------------------------> " + email);
+    var id_vacante = req.body.thisid;
+    vacante.findOne({
+        '_id': id_vacante
+    }, function(err, esta_vacante) {
+        if (err) {
+            console.log("--------------------------------> Fail: " + err);
+        } else {
+            console.log("--------------------------------> Usuario: " + esta_vacante);
+        }
+        User.findOne({
+            'cuenta.email': email
+        }, function(err, user) {
+            if (err) {
+                console.log("--------------------------------> Fail: " + err);
+            } else {
+                console.log("--------------------------------> Usuario: " + user);
+            }
+            var newPresentacion = {
+                id: id_vacante,
+                estado: 0
+            }
+            user.cv.vacantes_presentadas.push(newPresentacion);
+            user.save(function(err) {
+                if (err) {
+                    console.log("--------------------------------> Fail: " + err);
+                    res.redirect('/');
+                } else {
+                    res.redirect('/trabajos');
+                }
+            });
+        })
+    })
 });
 
 /* Obtener pagina de vacantes. */
@@ -83,13 +146,12 @@ router.post('/vacantes', function(req, res, next) {
 router.get('/crear_vacante', function(req, res, next) {
     res.render('crear_vacante', {
         title: 'PWELL | Crear vacante',
-        style: 'style_conf_vacante.css',
-        csrfToken: req.csrfToken()
+        style: 'style_conf_vacante.css'
     });
 });
 
 router.post('/crear_vacante', function(req, res, next) {
-    console.log("--------Eoooo--------------------------------> " + email);
+    console.log("--------Email--------------------------------> " + email);
 
     User.findOne({
             'cuenta.email': email
@@ -177,8 +239,7 @@ router.get('/terminos_condiciones', function(req, res, next) {
 router.get('/user/cv', isLoggedIn, function(req, res, next) {
     res.render('user/cv', {
         title: 'PWEEL | Hoja de vida',
-        style: 'style_cv.css',
-        csrfToken: req.csrfToken()
+        style: 'style_cv.css'
     })
 });
 
@@ -199,7 +260,6 @@ router.get('/user/iniciarsesion', function(req, res, next) {
     res.render('user/iniciarsesion', {
         title: 'PWEEL | Iniciar sesión',
         style: 'style_inisec.css',
-        csrfToken: req.csrfToken(),
         messages: messages,
         hasErrors: messages.length > 0
     });
@@ -217,7 +277,6 @@ router.get('/user/registro1', function(req, res, next) {
     var messages = req.flash('error');
     res.render('user/registro1', {
         title: 'PWEEL | Registro',
-        csrfToken: req.csrfToken(),
         style: 'style_reg.css',
         messages: messages,
         hasErrors: messages.length > 0
@@ -267,7 +326,6 @@ router.get('/user/registro2', function(req, res, next) {
         gnumID: numID,
         gemail: email,
         style: 'style_reg2.css',
-        csrfToken: req.csrfToken(),
         messages: messages,
         hasErrors: messages.length > 0
     })

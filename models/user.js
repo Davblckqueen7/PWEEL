@@ -15,7 +15,10 @@ var userSchema = new Schema({
     },
     cv: {
         vacantes_propias: [Schema.Types.ObjectId],
-        vacantes_presentadas: [Schema.Types.ObjectId],
+        vacantes_presentadas: [{
+            id: Schema.Types.ObjectId,
+            estado: Number
+        }],
         porcent: { type: Number, required: true },
         inf: {
             nombres: { type: String, required: true },
