@@ -146,7 +146,24 @@ router.post('/ver_vacante', function(req, res, next) {
                 } else {
                     var newBebe = {
                         id: user._id,
-                        nombre: user.cv.inf.nombres,
+                        nombres: user.cv.inf.nombres,
+                        primer_apellido: user.cv.inf.primer_apellido,
+                        segundo_apellido: user.cv.inf.segundo_apellido,
+                        tipo_doc: user.cv.inf.tipo_doc,
+                        num_doc: user.cv.inf.num_doc,
+                        born_date: {
+                            day: user.cv.inf.born_date.day,
+                            month: user.cv.inf.born_date.month,
+                            year: user.cv.inf.born_date.year
+                        },
+                        genero: user.cv.inf.genero,
+                        ciudad: user.cv.inf.ciudad,
+                        direccion: user.cv.inf.direccion,
+                        born_city: user.cv.inf.born_city,
+                        cel: user.cv.inf.cel,
+                        tel: user.cv.inf.tel,
+                        perfil_laboral: user.cv.perfil_laboral,
+                        email: user.cuenta.email,
                         aceptado: false
                     }
                     esta_vacante.postulados.push(newBebe);
@@ -226,6 +243,13 @@ router.post('/vacantes', function(req, res, next) {
     res.redirect('/confing_vacante/' + vacante_actual_id);
 });
 
+router.post('/vacantes_to_postulados', function(req, res, next) {
+
+    var vacante_actual_id = req.body.id_de_la_vacante;
+    console.log("------------------------> Entro al post de mierda!!! ====> " + vacante_actual_id);
+    res.redirect('/postulados/' + vacante_actual_id);
+});
+
 router.get('/crear_vacante', function(req, res, next) {
     res.render('crear_vacante', {
         title: 'PWELL | Crear vacante',
@@ -283,14 +307,6 @@ router.post('/crear_vacante', function(req, res, next) {
         });
 });
 
-/* Obtener pagina de postulados. */
-router.get('/postulados', function(req, res, next) {
-    res.render('postulados', {
-        title: 'PWEEL | Postulados',
-        style: 'style_postulado.css'
-    });
-});
-
 /* Obtener pagina de confing_vacante. */
 router.get('/confing_vacante/:id', function(req, res, next) {
     var id = req.params.id;
@@ -300,6 +316,23 @@ router.get('/confing_vacante/:id', function(req, res, next) {
         la_puta_id: id,
         nombre_cargo: vacante_actual_nombre
     });
+});
+/* Obtener pagina de postulados. */
+router.get('/postulados/:id', function(req, res, next) {
+    var id = req.params.id;
+    vacante.findOne({ '_id': id }, function(err, esta_vacante) {
+        if (err) {
+            console.log("------------------->Error fatal");
+        } else {
+            var postulados = esta_vacante.postulados;
+            res.render('postulados', {
+                title: 'PWELL | postulados',
+                style: 'style_postulado.css',
+                postulados: postulados
+            });
+        }
+    })
+
 });
 
 /* Obtener pagina de confing_user. */

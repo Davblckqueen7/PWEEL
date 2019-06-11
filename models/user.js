@@ -45,7 +45,7 @@ var userSchema = new Schema({
             cel: { type: Number, required: true },
             tel: { type: Number, required: true }
         },
-        perfil_laboral: { type: Number, required: false }
+        perfil_laboral: { type: String, required: false }
     }
 });
 
