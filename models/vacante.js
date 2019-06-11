@@ -32,6 +32,7 @@ var VacanateSchema = new Schema({
         tel: { type: Number, required: true },
         perfil_laboral: { type: String, required: false },
         email: { type: String, required: true },
+        full: Boolean,
         aceptado: Boolean
     }]
 }, { collection: 'vacantes' });
